@@ -103,7 +103,7 @@ div.innerText = `${counter}`;
  let hr1:HTMLElement = document.createElement('hr');
  let hr2:HTMLElement = document.createElement('hr');
 
- let reasonHolder:HTMLDivElement = document.createElement('div');
+ let reasonHolder = document.createElement('div');
  reasonHolder.setAttribute('id','reasonHolder');
 for (let i = 0; i < 5; i++) {
     let childOfReasonHolder = document.createElement('button');
@@ -138,10 +138,22 @@ reasonHolder.children[2].addEventListener('click',()=>{
 reasonHolder.children[3].addEventListener('click',()=>{
     let highPrice:IReason = {id:reasonArr.length+1,reason:reasonHolder.children[3].innerHTML};
     reasonArr.push(highPrice);
-
 });
-reasonHolder.children[4].addEventListener('click',()=>{
+
+
+reasonHolder.children[4].addEventListener('click',():void=>{
     let highPrice:IReason = {id:reasonArr.length+1,reason:reasonHolder.children[4].innerHTML};
     reasonArr.push(highPrice);
 
 });
+
+
+console.log(Array.isArray(reasonHolder.children))
+console.log(reasonHolder.children)
+
+for (const reasonArrKey in reasonHolder.children) {
+    if(typeof reasonHolder.children[reasonArrKey] === 'object'){
+        console.log(reasonHolder.children[reasonArrKey]);
+    }
+}
+
